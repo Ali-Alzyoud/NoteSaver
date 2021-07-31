@@ -35,21 +35,23 @@ function Login({ loggedin}) {
     }
 
     return (
-        <Container isBlock={true}>
-            <TextBox placeHolder={'Username(Email)'} onChange={emailChange}/>
-            <TextBox password={true} placeHolder={'password'}  onChange={passwordChange}/>
-            <Button title='&nbsp;&nbsp;Login&nbsp;&nbsp;' onClick={onLogin} />
-            <Button title='Register' onClick={onRegister} />
-            {loading ?
-                <Container isCover={true}>
-                    <Container isCenter={true}>
-                        <Loader />
+        <form>
+            <Container isBlock={true}>
+                <TextBox placeHolder={'Username(Email)'} onChange={emailChange}/>
+                <TextBox password={true} placeHolder={'password'}  onChange={passwordChange}/>
+                <Button title='&nbsp;&nbsp;Login&nbsp;&nbsp;' onClick={onLogin} />
+                <Button title='Register' onClick={onRegister} />
+                {loading ?
+                    <Container isCover={true}>
+                        <Container isCenter={true}>
+                            <Loader />
+                        </Container>
                     </Container>
-                </Container>
-                :
-                null
-            }
-        </Container>
+                    :
+                    null
+                }
+            </Container>
+        </form>
     )
 }
 

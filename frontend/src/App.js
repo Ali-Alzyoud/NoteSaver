@@ -1,7 +1,7 @@
 import './App.css';
 
-import { Fragment, useEffect, useState } from 'react';
-import { Loader } from './components';
+import { useEffect, useState } from 'react';
+import { Loader, Notes } from './components';
 import { Login } from './views';
 import * as API from './common/API/API'
 
@@ -30,6 +30,9 @@ function App() {
       else{
         setloading(false);
       }
+    }).catch(error => {
+      alert('error connecting to server')
+      setloading(false);
     });
     return () => {
     }
@@ -43,15 +46,9 @@ function App() {
           ?
           <Loader />
           :
-          userState === 'anonymous' && <Login loggedin={loggedIn} />}
-          <ul>
-            {notes.map((note, index)=>{
-              return <Fragment key={index}>
-                      <li>{note.title}</li>
-                      <li>{note.description}</li>
-                    </Fragment>
-            })}
-          </ul>
+          userState === 'anonymous' && <Login loggedin={loggedIn} />
+        }
+        {notes && <Notes notes={notes}/>}
       </header>
     </div>
   );
